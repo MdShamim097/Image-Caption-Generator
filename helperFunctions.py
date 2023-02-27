@@ -95,7 +95,7 @@ def loadCleanCaptions(file_name, photos):
 
 # Loading all features that have previously extracted from the Xception model
 def loadFeatures(photos):
-    all_features=load(open("features.p","rb"))
+    all_features=load(open("./../features.p","rb"))
     features={k:all_features[k] for k in photos}                             # selecting only needed features
     return features
 
