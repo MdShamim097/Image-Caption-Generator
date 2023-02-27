@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import argparse
-from searchs import generateCapGreedy
+from searchs import generateCapGreedy, generateCapBeam
 
 ap=argparse.ArgumentParser()
 ap.add_argument('-i', '--image', required=True, help="Image Path")
@@ -44,6 +44,8 @@ image=Image.open(img_path)
 
 print("\n")
 print("Caption using Greedy Search: ", generateCapGreedy(model, tokenizer, photo, max_length))
-
+print("Caption using Beam Search(k=2): ", generateCapBeam(model, tokenizer, photo, max_length, beam_index=2))
+print("Caption using Beam Search(k=3): ", generateCapBeam(model, tokenizer, photo, max_length, beam_index=3))
+print("Caption using Beam Search(k=5): ", generateCapBeam(model, tokenizer, photo, max_length, beam_index=5))
 plt.imshow(image)
 plt.show()
